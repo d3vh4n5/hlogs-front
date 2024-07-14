@@ -6,31 +6,24 @@ import { API_URL} from '../../constants/apiURL'
 
 const router = useRouter()
 
+const name = ref('')
 const email = ref('')
 const password = ref('')
 
 const handleSubmit = async () => {
     try {
-        const resp = await axios.post(API_URL + '/auth/login', 
+        const resp = await axios.post(API_URL + '/auth/register', 
             JSON.stringify({
+                name: name.value,
                 email: email.value,
                 password: password.value
             })
         )
 
-        if (resp.status === 200){
-            const data = resp.data
-            console.log(data)
-
-            const { user, accessToken, refreshToken } = data
-
-            localStorage.setItem("user", JSON.stringify(user))
-            localStorage.setItem("accessToken", accessToken)
-            localStorage.setItem("refreshToken", refreshToken)
-
-            router.push('/dashboard')
+        if (resp.status >= 200 && resp.status < 300){
+            alert("Te registraste correctamente!")
         } else {
-            throw new Error("Error de autenticación")
+            alert("No se pudo registrar")
         }
     } catch (error) {
         console.error(error)
@@ -43,7 +36,11 @@ const handleSubmit = async () => {
     <section class="bg-light d-flex align-items-center p-3">
         <div class="col-12 col-md-6 col-lg-3 mx-auto">
             <form @submit.prevent="handleSubmit" class="bg-white p-3 rounded-3 shadow-sm">
-                <h1 class="text-center my-5">Login</h1>
+                <h1 class="text-center my-5">Register</h1>
+                <div class="mb-3">
+                    <div class="form-label">Nombre</div>
+                    <input type="text" class="form-control" v-model="name">
+                </div>
                 <div class="mb-3">
                     <div class="form-label">
                         Email
@@ -61,7 +58,7 @@ const handleSubmit = async () => {
                     </label>
                 </div>
                 <button class="btn btn-primary w-100 my-4">Entrar</button>
-                <RouterLink to="/auth/register">Registrarse</RouterLink>
+                <RouterLink to="/auth/login">Login</RouterLink>
                 <br>
                 <RouterLink to="/">Home</RouterLink>
             </form>

@@ -3,6 +3,7 @@ import { createWebHistory , createRouter } from 'vue-router'
 import App from './App.vue'
 import { routes as dashboardRoutes } from './modules/dashboard/router'
 import Login from './modules/auth/Login.vue'
+import Register from './modules/auth/Register.vue'
 import Home from './components/Home.vue'
 import DashboardLayout from './modules/dashboard/components/DashboardLayout.vue'
 import NotFound from './components/NotFound.vue'
@@ -24,7 +25,11 @@ const routes = [
             {
                 path: 'login',
                 component: Login
-            }
+            },
+            {
+                path: 'register',
+                component: Register
+            },
         ]
     },
     {
