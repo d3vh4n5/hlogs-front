@@ -12,20 +12,20 @@ const router = useRouter()
 const form = ref({})
 const loading = ref(false)
 
-const handleChange = (e) => {
-    form.value = {
-        ...form.value,
-        [e.target.name]: e.target.value
-    }
-}
-const handleCheckbox = (e) => {
-    form.value = {
-        ...form.value,
-        [e.target.name]: e.target.checked
-    }
+// const handleChange = (e) => {
+//     form.value = {
+//         ...form.value,
+//         [e.target.name]: e.target.value
+//     }
+// }
+// const handleCheckbox = (e) => {
+//     form.value = {
+//         ...form.value,
+//         [e.target.name]: e.target.checked
+//     }
 
-    console.log(form.value)
-}
+//     console.log(form.value)
+// }
 
 const handleSubmit = async () => {
     try {

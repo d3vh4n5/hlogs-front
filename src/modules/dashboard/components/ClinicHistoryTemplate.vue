@@ -41,7 +41,7 @@ onMounted(()=>{
    <article v-if="clinicHistory !== null">
         <div class="d-flex justify-content-between">
             <RouterLink 
-                :to="`/pages/dashboard/clinic-history/edit?id=${clinicHistory.id}`" 
+                :to="`/dashboard/clinic-history/edit?id=${clinicHistory.id}`" 
                 class="btn btn-warning my-3">Editar</RouterLink>
             <button 
                 @click="deleteClinicHistory(
